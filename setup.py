@@ -32,11 +32,9 @@ CLASSIFIERS = [
     'Operating System :: MacOS'
 ]
 
-
+import imtypes
 import sys
-from setuptools import setup, find_packages
-
-import versioneer
+from setuptools import setup
 
 
 if sys.version_info < (3, 6):
@@ -60,8 +58,7 @@ if __name__ == '__main__':
         long_description=LONG_DESCRIPTION,
         license=LICENSE,
         download_url=DOWNLOAD_URL,
-        version=versioneer.get_version(),
-        cmdclass=versioneer.get_cmdclass(),
+        version=imtypes.__version__,
         classifiers=CLASSIFIERS,
         install_requires=INSTALL_REQUIRES,
         requires=requirements,
