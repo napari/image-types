@@ -1,5 +1,5 @@
 import numpy as np
-from typing import NewType, Union as U, Tuple as Tup
+from typing import NewType, Union as U, Tuple as Tup, Sequence as Seq
 
 
 # Base image type: an Image is just a NumPy array
@@ -19,10 +19,12 @@ ImageCh = NewType('ImageCh', AnyImage)
 # Multichannel 2D images: a subtype of ImageCh restricted to only two channels
 ImageCh2D = NewType('ImageCh2D', ImageCh)
 
-
 AnyImage2D = U[Image2D, ImageCh2D]
 
 
-Sigma = U[float, Tup[float, ...]]
+Coords = NewType('Coords', np.ndarray)
 
-Spacing = U[float, Tup[float, ...]]
+
+Sigma = U[float, Seq[float]]
+
+Spacing = U[float, Seq[float]]
