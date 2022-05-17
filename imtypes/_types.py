@@ -1,6 +1,7 @@
-import numpy as np
+"""Types to annotate image processing functions."""
 import typing as t
 
+import numpy as np
 
 if tuple(np.__version__.split(".")) < ("1", "20"):
     # this hack is because NewType doesn't allow `Any` as a base type
@@ -39,7 +40,8 @@ MeshFaces = t.NewType("MeshFaces", Array)
 MeshValues = t.NewType("MeshValues", Array)
 """(K0, ..., KL, N) array of values used to color vertices.
 
-where the additional L dimensions are used to color the same mesh with different values
+where the additional L dimensions are used to color the same mesh with
+different values.
 """
 
 SurfaceData = t.NewType("SurfaceData", t.Tuple[MeshVertices, MeshFaces])

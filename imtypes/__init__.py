@@ -21,7 +21,6 @@ from ._types import (
     VectorsData,
 )
 
-
 __all__ = [
     "ImageData",
     "LabelsData",
