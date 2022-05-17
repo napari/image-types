@@ -1,4 +1,39 @@
-from ._types import (AnyImage, AnyImage2D, Image, Image2D, ImageCh, ImageCh2D,
-                     Sigma, Spacing)
+from importlib.metadata import PackageNotFoundError, version
 
-__version__ = '0.1.dev0'
+try:
+    __version__ = version("imtypes")
+except PackageNotFoundError:
+    __version__ = version("uninstalled")
+
+from ._types import (
+    ImageData,
+    LabelsData,
+    LayerDataTuple,
+    MeshFaces,
+    MeshValues,
+    MeshVertices,
+    PointsData,
+    ShapeData,
+    ShapesData,
+    SurfaceData,
+    SurfaceValueData,
+    TracksData,
+    VectorsData,
+)
+
+
+__all__ = [
+    "ImageData",
+    "LabelsData",
+    "LayerDataTuple",
+    "MeshFaces",
+    "MeshValues",
+    "MeshVertices",
+    "PointsData",
+    "ShapeData",
+    "ShapesData",
+    "SurfaceData",
+    "SurfaceValueData",
+    "TracksData",
+    "VectorsData",
+]
