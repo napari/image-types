@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "imtypes"
+description = "Types to annotate image processing functions"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Juan Nunez-Iglesias", email = "juan.nunez-iglesias@monash.edu" },
+    { name = "Talley Lambert", email = "talley.lambert@gmail.com" },
+]
+classifiers = [
+    'Development Status :: 2 - Pre-Alpha',
+    'Intended Audience :: Education',
+    'Intended Audience :: Science/Research',
+    'License :: OSI Approved :: BSD License',
+    'Programming Language :: C',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3 :: Only',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Topic :: Scientific/Engineering',
+    'Topic :: Scientific/Engineering :: Visualization',
+    'Topic :: Scientific/Engineering :: Information Analysis',
+    'Topic :: Scientific/Engineering :: Bio-Informatics',
+    'Topic :: Utilities',
+    'Operating System :: Microsoft :: Windows',
+    'Operating System :: POSIX',
+    'Operating System :: Unix',
+    'Operating System :: MacOS',
+]
+
+dependencies = []
+dynamic = ["version"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.urls]
+homepage = "https://github.com/napari/image-types"
+repository = "https://github.com/napari/image-types"
+
+
+[tool.setuptools_scm]
+
+[tool.isort]
+profile = "black"
