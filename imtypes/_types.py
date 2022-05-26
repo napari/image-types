@@ -14,12 +14,69 @@ if tuple(np.__version__.split(".")) < ("1", "20"):
 else:
     Array = np.ndarray  # type: ignore
 
+import typing as t
+from typing import Annotated, Generic, Protocol, TypeVar
+
+
+class Array(Protocol):
+    ...
+
 
 ImageData = t.NewType("ImageData", Array)
 """Dense array of image intensity.  Can be N >= 2 dimensional."""
 
+
 LabelsData = t.NewType("LabelsData", Array)
 """Dense array of integers or bool.  Can be N >= 2 dimensional."""
+
+
+ImageDataAnn = Annotated[Array, "image"]
+ImageDataAnn2 = Annotated[Array, "image"]
+ImageDataAnn is ImageDataAnn2  # True
+
+# could do shape/dype stuff ... but we should refrain as much as possible
+ImageDataAnn = Annotated[Array, "image", 2]
+
+LabelsDataAnn = Annotated[Array, "labels"]
+
+
+from typing_extensions import TypeVarTuple, Unpack
+
+Dtype = TypeVar("Dtype")
+Shape = TypeVarTuple("TypeVarTuple")
+
+
+class Array(Protocol, Generic[Dtype, Unpack[Shape]]):
+    ...
+
+
+ImageData = Annotated[Array, "image"]
+LabelsData = Annotated[Array, "labels"]
+
+
+class ImageData(Array):
+    ...
+
+
+class LabelsData(Array):
+    ...
+
+
+def segment(image: ImageData) -> LabelsData:
+    ...
+
+
+def segment_ann(image: ImageDataAnn) -> LabelsDataAnn:
+    ...
+
+
+def gaussian(image: ImageData) -> ImageData:
+    ...
+
+
+def gaussian_ann(image: ImageDataAnn) -> ImageDataAnn:
+    ...
+
 
 PointsData = t.NewType("PointsData", Array)
 """(N, D) Coordinates for N points in D dimensions."""
